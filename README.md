@@ -3,9 +3,9 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 
-A collection of small cybersecurity utilities built with Python — designed for learning, lab practice, and authorized security testing.
+I built these small cybersecurity utilities to understand security concepts by coding them myself — port scanning, hash cracking, password auditing, and PDF protection testing. Each tool is self-contained and focused on one thing, born from a specific problem I wanted to solve or a technique I wanted to understand better.
 
-Each tool is self-contained, minimal, and focused on a single task: scanning, hashing, cracking, or auditing.
+Designed for learning, lab practice, and authorized security testing only.
 
 ---
 
