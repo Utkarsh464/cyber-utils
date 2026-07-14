@@ -1,4 +1,4 @@
-"""PDF password auditor — generates targeted wordlists from personal info and tests encrypted PDFs."""
+"""PDF password auditor — generates targeted wordlists from personal info and tests encrypted PDFs. For use on authorized PDFs only, for learning purposes."""
 
 import pypdf
 
