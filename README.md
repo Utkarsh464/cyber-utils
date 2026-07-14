@@ -1,4 +1,4 @@
-# Cybersecurity Python Tools
+# Cyber Utils
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
@@ -23,8 +23,8 @@ Each tool is self-contained, minimal, and focused on a single task: scanning, ha
 ## Installation
 
 ```bash
-git clone https://github.com/Utkarsh464/cybersecurity-python-tools.git
-cd cybersecurity-python-tools
+git clone https://github.com/Utkarsh464/cyber-utils.git
+cd cyber-utils
 pip install -r requirements.txt
 ```
 
