@@ -1,9 +1,9 @@
-# Cyber Utils
+# Pentools
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 
-I built these small cybersecurity utilities while learning — port scanning, hash cracking, password auditing, and PDF protection testing. Each tool is self-contained and focused on one thing, written to understand security concepts by coding them myself.
+Small cybersecurity utilities I built while learning — port scanning, hash cracking, password auditing, PDF protection testing, and blind SQLi extraction. Each tool is self-contained and focused on one thing, written to understand security concepts by coding them myself.
 
 Designed for learning, lab practice, and authorized security testing only.
 
