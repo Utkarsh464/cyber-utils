@@ -77,6 +77,8 @@ python blind_sqli.py
 
 Solves PortSwigger's *Blind SQL injection with conditional errors* lab on an Oracle backend by asking the app yes/no questions ("is this character correct?") and reading the answer from the HTTP status code (500 = TRUE, 200 = FALSE). Uses `requests`.
 
+Written alongside my [PortSwigger Academy lab writeups](https://github.com/Utkarsh464/portswigger-academy) — see the [Blind SQL injection with conditional errors](https://github.com/Utkarsh464/portswigger-academy/blob/main/SQL%20Injection/13%20-%20Blind%20SQL%20injection%20with%20conditional%20errors/README.md) writeup for the walkthrough this tool automates.
+
 ---
 
 ## Requirements
