@@ -24,8 +24,8 @@ Designed for learning, lab practice, and authorized security testing only.
 ## Installation
 
 ```bash
-git clone https://github.com/Utkarsh464/cyber-utils.git
-cd cyber-utils
+git clone https://github.com/Utkarsh464/pentools.git
+cd pentools
 pip install -r requirements.txt
 ```
 
