@@ -17,7 +17,7 @@ Designed for learning, lab practice, and authorized security testing only.
 | [`hash_cracker.py`](hash_cracker.py) | Hash identifier and cracker — auto-detects algorithm by hash length and cracks against a wordlist. |
 | [`hasher.py`](hasher.py) | Password hasher — generate MD5, SHA1, SHA224, SHA256, SHA384, or SHA512 hashes. |
 | [`pdf_cracker.py`](pdf_cracker.py) | PDF password auditor — generates targeted wordlists from personal info and tests encrypted PDFs. |
-| [`blind_sqli.py`](blind_sqli.py) | Blind SQL injection password extractor — Oracle conditional-error oracle (`TO_CHAR(1/0)`) with char-by-char extraction. |
+| [`blind_sqli_extractor.py`](blind_sqli_extractor.py) | Blind SQL injection password extractor — Oracle conditional-error oracle (`TO_CHAR(1/0)`) with char-by-char extraction. |
 
 ---
 
@@ -69,7 +69,7 @@ python pdf_cracker.py
 ### Blind SQLi
 
 ```bash
-python blind_sqli.py
+python blind_sqli_extractor.py
 # Lab URL: https://0a1b2c...web-security-academy.net/
 # Session cookie value: ...
 # TrackingId cookie value: ...
@@ -85,7 +85,7 @@ Written alongside my [PortSwigger Academy lab writeups](https://github.com/Utkar
 
 - Python 3.8+
 - [`pypdf`](https://pypi.org/project/pypdf/) — for PDF cracking (included in `requirements.txt`)
-- [`requests`](https://pypi.org/project/requests/) — for `blind_sqli.py` (included in `requirements.txt`)
+- [`requests`](https://pypi.org/project/requests/) — for `blind_sqli_extractor.py` (included in `requirements.txt`)
 
 All other tools use only the Python standard library.
 
