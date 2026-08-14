@@ -103,5 +103,5 @@ Licensed under the [MIT License](LICENSE).
 
 ---
 
-**Utkarsh Solanki** — Cybersecurity & AI Student
+**Utkarsh Solanki** — Cybersecurity Student
 [LinkedIn](https://linkedin.com/in/utkarsh-solanki-337806252) · [GitHub](https://github.com/Utkarsh464)
