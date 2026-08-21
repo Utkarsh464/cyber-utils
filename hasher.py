@@ -1,5 +1,6 @@
 """Password hasher — generate MD5, SHA1, SHA224, SHA256, SHA384, or SHA512 hashes."""
 
+import argparse
 import hashlib
 
 algos = {
@@ -11,13 +12,28 @@ algos = {
     "sha512": hashlib.sha512,
 }
 
+
 def hasher(algo, password):
     return algo(password.strip().encode()).hexdigest()
 
-word = input("enter the password :")
-choice = input("choose algo (md5/sha1/sha224/sha256/sha384/sha512): ")
-func = algos.get(choice)
-if func is None:
-    print("unknown algo")
-else:
-    print(hasher(func, word))
+
+def main():
+    parser = argparse.ArgumentParser(description="Password hasher")
+    parser.add_argument("password", help="password to hash")
+    parser.add_argument(
+        "--algo",
+        choices=["md5", "sha1", "sha224", "sha256", "sha384", "sha512"],
+        default="sha256",
+        help="hash algorithm",
+    )
+    args = parser.parse_args()
+
+    func = algos.get(args.algo)
+    if func is None:
+        print("unknown algo")
+    else:
+        print(hasher(func, args.password))
+
+
+if __name__ == "__main__":
+    main()

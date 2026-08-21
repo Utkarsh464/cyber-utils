@@ -1,5 +1,6 @@
 """PDF password auditor — generates targeted wordlists from personal info and tests encrypted PDFs. For use on authorized PDFs only, for learning purposes."""
 
+import argparse
 import pypdf
 
 
@@ -10,7 +11,7 @@ def make_wordlist(name: str, mobile: str, dob: str) -> list[str]:
 
     first3 = name[:3]
     first4 = name[:4]
-    year = dob[-4:]      # YYYY from MMDDYYYY
+    year = dob[-4:]  # YYYY from MMDDYYYY
     month = dob[:2]
     day = dob[2:4]
     last4mobile = mobile[-4:]
@@ -27,19 +28,16 @@ def make_wordlist(name: str, mobile: str, dob: str) -> list[str]:
         first4 + "@" + year,
         name[(len(name) - 1) // 2] + first4mobile,
         name[len(name) // 2] + first4mobile,
-
         # Capitalization
         first4.upper() + year,
         first4.capitalize() + year,
         first4.lower() + year,
-
         # With symbols
         first4.upper() + "@" + year,
         first4.capitalize() + "@" + year,
         first4 + "#" + year,
         first4 + "_" + year,
         first4 + "." + year,
-
         # Common numeric suffixes
         first4 + "123",
         first4 + "1234",
@@ -47,26 +45,22 @@ def make_wordlist(name: str, mobile: str, dob: str) -> list[str]:
         first4 + "2024",
         first4 + "2025",
         first4 + "2026",
-
         # Birth date combinations
         first4 + month + day,
         first4 + day + month,
         first4 + dob,
         first4 + "@" + dob,
-
         # Mobile combinations
         first4 + last4mobile,
         first4.upper() + last4mobile,
         first4.capitalize() + last4mobile,
         first4 + "@" + last4mobile,
-
         # Mixed patterns
         first4.upper() + year + "!",
         first4.capitalize() + "123",
         first4 + "@" + "123",
         first4 + "#" + "123",
         first4 + "_" + "123",
-
         # Reversed name
         first4[::-1] + year,
         first4[::-1] + first4mobile,
@@ -108,14 +102,21 @@ def crack_pdf(pdf_path: str, wordlist: list[str]) -> str | None:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="PDF password wordlist tester")
+    parser.add_argument("pdf_path", help="path to the PDF file")
+    parser.add_argument("name", help="person's name")
+    parser.add_argument("mobile", help="mobile number")
+    parser.add_argument("dob", help="date of birth in MMDDYYYY")
+    args = parser.parse_args()
+
     print("=" * 40)
     print("      PDF Password Wordlist Tester")
     print("=" * 40)
 
-    pdf_path = input("PDF path: ").strip()
-    name = input("Name: ").strip()
-    mobile = input("Mobile Number: ").strip()
-    dob = input("DOB (MMDDYYYY): ").strip()
+    pdf_path = args.pdf_path.strip()
+    name = args.name.strip()
+    mobile = args.mobile.strip()
+    dob = args.dob.strip()
 
     if not name:
         print("Name cannot be empty.")

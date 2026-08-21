@@ -34,45 +34,31 @@ pip install -r requirements.txt
 ### Port Scanner
 
 ```bash
-python port_scanner.py
-# enter target ip or hostname: 192.168.1.1
-# start port: 1
-# end port: 1024
+python port_scanner.py 192.168.1.1 --start 1 --end 1024
 ```
 
 ### Hash Cracker
 
 ```bash
-python hash_cracker.py
-# enter the hash path: hashes.txt
-# enter wordlist path: wordlist.txt
+python hash_cracker.py hashes.txt wordlist.txt
 ```
 
 ### Hasher
 
 ```bash
-python hasher.py
-# enter the password: mysecret
-# choose algo (md5/sha1/sha224/sha256/sha384/sha512): sha256
+python hasher.py mysecret --algo sha256
 ```
 
 ### PDF Cracker
 
 ```bash
-python pdf_cracker.py
-# PDF path: protected.pdf
-# Name: John
-# Mobile Number: 1234567890
-# DOB (MMDDYYYY): 01011990
+python pdf_cracker.py protected.pdf John 1234567890 01011990
 ```
 
 ### Blind SQLi
 
 ```bash
-python blind_sqli_extractor.py
-# Lab URL: https://0a1b2c...web-security-academy.net/
-# Session cookie value: ...
-# TrackingId cookie value: ...
+python blind_sqli_extractor.py https://0a1b2c...web-security-academy.net/ SESSION_VALUE TRACKING_VALUE
 ```
 
 Solves PortSwigger's _Blind SQL injection with conditional errors_ lab on an Oracle backend by asking the app yes/no questions ("is this character correct?") and reading the answer from the HTTP status code (500 = TRUE, 200 = FALSE). Uses `requests`.

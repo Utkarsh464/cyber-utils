@@ -1,5 +1,6 @@
 """Hash identifier and cracker — auto-detects algorithm by hash length and cracks against a wordlist."""
 
+import argparse
 import hashlib
 
 algos = {
@@ -10,6 +11,7 @@ algos = {
     96: hashlib.sha384,
     128: hashlib.sha512,
 }
+
 
 def crack_hash(targets, wordlist):
     with open(targets, "r", errors="ignore") as t:
@@ -29,6 +31,12 @@ def crack_hash(targets, wordlist):
                 else:
                     print("not found:", target)
 
-x = input("enter the hash path :")
-w = input("enter wordlist path :")
-crack_hash(x, w)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Hash identifier and cracker — auto-detects algorithm by hash length and cracks against a wordlist."
+    )
+    parser.add_argument("hashes", help="path to file containing hashes to crack")
+    parser.add_argument("wordlist", help="path to wordlist file")
+    args = parser.parse_args()
+    crack_hash(args.hashes, args.wordlist)
